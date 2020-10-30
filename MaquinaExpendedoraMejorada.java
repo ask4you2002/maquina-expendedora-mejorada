@@ -72,16 +72,19 @@ public class MaquinaExpendedoraMejorada {
         }            
     }
     public int vaciarDineroDeLaMaquina() {
+        int mensajeError = -1;
         int totalExtraido =  totalDineroAcumulado;
         if(balanceClienteActual == 0){
-            int totalDineroAcumulado = 0;
+            int totalDineroAcumulado=0;
+            System.out.println("Extraido:" + totalExtraido + "€");
         }
         else {
-            System.out.println("-1");
+            System.out.println("Hay un usuario activo");
+            
         }
-        return totalExtraido;
+        return mensajeError;
     }
-    /**
+       /**
      * Cancela la operacion de compra del cliente actual y le
      * devuelve al cliente el dinero que ha introducido hasta el momento
      */
