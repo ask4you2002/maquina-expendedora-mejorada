@@ -10,18 +10,20 @@ public class MaquinaExpendedoraMejorada {
     private String estacionOrigen;
     // El destino del billete
     private String estacionDestino;
+    
+    private int valorADevolver;
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
-        estacionOrigen = origen;
-        estacionDestino = destino;
+        estacionOrigen = "leon";
+        estacionDestino = "asturias";
     }
     /**
      * Devuelve el precio del billete
@@ -72,17 +74,15 @@ public class MaquinaExpendedoraMejorada {
         }            
     }
     public int vaciarDineroDeLaMaquina() {
-        int mensajeError = -1;
-        int totalExtraido =  totalDineroAcumulado;
-        if(balanceClienteActual == 0){
-            int totalDineroAcumulado=0;
-            System.out.println("Extraido:" + totalExtraido + "€");
+        if (balanceClienteActual == 0) {
+            valorADevolver = totalDineroAcumulado;
+            int totalDineroAcumulado = 0;
         }
-        else {
+        if (balanceClienteActual > 0){
+            valorADevolver = -1;
             System.out.println("Hay un usuario activo");
-            
         }
-        return mensajeError;
+        return valorADevolver;
     }
        /**
      * Cancela la operacion de compra del cliente actual y le
