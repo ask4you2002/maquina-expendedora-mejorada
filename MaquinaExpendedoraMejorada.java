@@ -66,7 +66,7 @@ public class MaquinaExpendedoraMejorada {
      * Imprime un billete para el cliente actual
      */
     public void imprimirBillete() {
-        boolean maquinaConPremio;
+        
         int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
         if (cantidadDeDineroQueFalta <= 0) {        
             // Simula la impresion de un billete
@@ -83,7 +83,7 @@ public class MaquinaExpendedoraMejorada {
             balanceClienteActual = balanceClienteActual - precioBillete;
             numeroBilletesVendidos = numeroBilletesVendidos + 1;
             if (ValorPremio == 10){
-                System.out.println("tiene un descuento del 10 por ciento del coste del billete para compras en el comercio que tu elijas");
+                System.out.println("tiene un descuento de 3 € para compras en el comercio que tu elijas");
             }
         }
         else {
