@@ -11,7 +11,7 @@ public class MaquinaExpendedoraMejorada {
     // El destino del billete
     private String estacionDestino;
     
-   
+    private int numeroBilletesVendidos;
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
@@ -20,6 +20,7 @@ public class MaquinaExpendedoraMejorada {
      */
     public MaquinaExpendedoraMejorada(int precioDelBillete) {
         precioBillete = precioDelBillete;
+        numeroBilletesVendidos = 0;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         estacionOrigen = "leon";
@@ -48,12 +49,17 @@ public class MaquinaExpendedoraMejorada {
             System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
         }        
     }
+    public int getNumeroBilletesVendidos() {
+        return numeroBilletesVendidos;
+    }
+    public void imprimeNumeroBilletesVendidos() {
+        System.out.println("Se han imprimido " + (numeroBilletesVendidos) + " billetes");
+    }
     /**
      * Imprime un billete para el cliente actual
      */
     public void imprimirBillete() {
         int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
-
         if (cantidadDeDineroQueFalta <= 0) {        
             // Simula la impresion de un billete
             System.out.println("##################");
@@ -67,6 +73,7 @@ public class MaquinaExpendedoraMejorada {
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
             balanceClienteActual = balanceClienteActual - precioBillete;
+            numeroBilletesVendidos = numeroBilletesVendidos + 1;
         }
         else {
             System.out.println("Necesitas introducir " + ( cantidadDeDineroQueFalta ) + " euros mas!");
@@ -85,7 +92,7 @@ public class MaquinaExpendedoraMejorada {
         }
         return valorADevolver;
     }
-       /**
+      /**
      * Cancela la operacion de compra del cliente actual y le
      * devuelve al cliente el dinero que ha introducido hasta el momento
      */
