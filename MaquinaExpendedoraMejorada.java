@@ -10,21 +10,27 @@ public class MaquinaExpendedoraMejorada {
     private String estacionOrigen;
     // El destino del billete
     private String estacionDestino;
-    
     private int numeroBilletesVendidos;
+    private  int ValorPremio = 0;
+    
+    
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, boolean maquinaConPremio) {
         precioBillete = precioDelBillete;
         numeroBilletesVendidos = 0;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         estacionOrigen = "leon";
         estacionDestino = "asturias";
+        if (maquinaConPremio == true) {
+            ValorPremio = 10;
+            System.out.println("Se ha creado una maquina con premio");
+        }
     }
     /**
      * Devuelve el precio del billete
@@ -42,6 +48,7 @@ public class MaquinaExpendedoraMejorada {
      * Simula la introduccion de dinero por parte del cliente actual
      */
     public void introducirDinero(int cantidadIntroducida) {
+        
         if (cantidadIntroducida > 0) {
             balanceClienteActual = balanceClienteActual + cantidadIntroducida;
         }
@@ -59,6 +66,7 @@ public class MaquinaExpendedoraMejorada {
      * Imprime un billete para el cliente actual
      */
     public void imprimirBillete() {
+        boolean maquinaConPremio;
         int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
         if (cantidadDeDineroQueFalta <= 0) {        
             // Simula la impresion de un billete
@@ -74,6 +82,9 @@ public class MaquinaExpendedoraMejorada {
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
             balanceClienteActual = balanceClienteActual - precioBillete;
             numeroBilletesVendidos = numeroBilletesVendidos + 1;
+            if (ValorPremio == 10){
+                System.out.println("tiene un descuento del 10 por ciento del coste del billete para compras en el comercio que tu elijas");
+            }
         }
         else {
             System.out.println("Necesitas introducir " + ( cantidadDeDineroQueFalta ) + " euros mas!");
