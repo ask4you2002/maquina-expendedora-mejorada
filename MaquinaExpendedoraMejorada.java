@@ -11,7 +11,7 @@ public class MaquinaExpendedoraMejorada {
     // El destino del billete
     private String estacionDestino;
     
-    private int valorADevolver;
+   
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
@@ -74,6 +74,7 @@ public class MaquinaExpendedoraMejorada {
         }            
     }
     public int vaciarDineroDeLaMaquina() {
+        int valorADevolver = 0;
         if (balanceClienteActual == 0) {
             valorADevolver = totalDineroAcumulado;
             int totalDineroAcumulado = 0;
