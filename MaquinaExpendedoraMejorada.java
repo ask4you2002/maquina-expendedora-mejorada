@@ -1,5 +1,5 @@
 public class MaquinaExpendedoraMejorada {
-    
+
     // El precio del billete
     private int precioBillete;
     // La cantidad de dinero que lleva metida el cliente actual
@@ -10,14 +10,13 @@ public class MaquinaExpendedoraMejorada {
     private String estacionOrigen;
     // El destino del billete
     private String estacionDestino;
-    
+
     private int numeroBilletesVendidos;
-    
+
     private int numeroBilletes;
-    
+
     private  int ValorPremio = 0;
-    
-    
+
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
@@ -41,57 +40,63 @@ public class MaquinaExpendedoraMejorada {
             System.out.println("Se ha creado una maquina sin premio");
         }
         System.out.println("La maquina tiene un maximo de " + numeroMaximoBilletes + " billete/s");
-        
+
     }
+
     /**
      * Devuelve el precio del billete
      */
     public int getPrecioBillete() {
         return precioBillete;
     }
+
     /**
      * Devuelve la cantidad de dinero que el cliente actual lleva introducida
      */
     public int getBalanceClienteActual() {
         return balanceClienteActual;
     }
+
     /**
      * Simula la introduccion de dinero por parte del cliente actual
      */
     public void introducirDinero(int cantidadIntroducida) {
-      int numeroMaximoBilletes = numeroBilletes;  
-      if (cantidadIntroducida > 0) {
-            balanceClienteActual = balanceClienteActual + cantidadIntroducida;
-      }
-       
+        int numeroMaximoBilletes = numeroBilletes;  
+        if (cantidadIntroducida > 0) {
+                
+                if (numeroBilletesVendidos >= numeroBilletes) {
+                    System.out.println("La maquina ha vendido todos los billetes");
+                }
+                else {
+                    balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+                }
+                
+        }
         
-      else {
+        else {
             System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
-      }
-      if (numeroBilletesVendidos >= numeroMaximoBilletes){
-            cantidadIntroducida = 0;
-            System.out.println("La maquina ha vendido el maximo de billetes");
-      }
-      else{
-      }
+        }
     }    
+
     public int getNumeroBilletesVendidos() {
         return numeroBilletesVendidos;
     }
+
     public void imprimeNumeroBilletesVendidos() {
         System.out.println("Se han imprimido " + (numeroBilletesVendidos) + " billetes");
     }
+
     /**
      * Imprime un billete para el cliente actual
      */
     public void imprimirBillete() {
-        
-       int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
-       if (numeroBilletesVendidos >= numeroBilletes) {
-           System.out.println("La maquina ha vendido todos sus billetes");
-           
-           }
-       else if (cantidadDeDineroQueFalta <= 0) {        
+
+        int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
+        if (numeroBilletesVendidos >= numeroBilletes) {
+            System.out.println("La maquina ha vendido todos sus billetes");
+
+        }
+        else if (cantidadDeDineroQueFalta <= 0) {        
             // Simula la impresion de un billete
             System.out.println("##################");
             System.out.println("# Billete de tren:");
@@ -99,7 +104,7 @@ public class MaquinaExpendedoraMejorada {
             System.out.println("# " + precioBillete + " euros.");
             System.out.println("##################");
             System.out.println();         
-    
+
             // Actualiza el total de dinero acumulado en la maquina
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
@@ -108,11 +113,9 @@ public class MaquinaExpendedoraMejorada {
             if (ValorPremio == 1){
                 System.out.println("tiene un descuento de 3 € para compras en el comercio que elijas");
             }
-       }
-       
+        }
+
         
-        
-              
     }
     public int vaciarDineroDeLaMaquina() {
         int valorADevolver = 0;
@@ -126,7 +129,8 @@ public class MaquinaExpendedoraMejorada {
         }
         return valorADevolver;
     }
-      /**
+
+    /**
      * Cancela la operacion de compra del cliente actual y le
      * devuelve al cliente el dinero que ha introducido hasta el momento
      */
